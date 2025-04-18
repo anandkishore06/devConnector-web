@@ -10,7 +10,7 @@ const Login = () => {
   const [password, setPassword] = useState("Anand@123");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const [error, setError] = useState("");
   const handleLogin = async () => {
     try {
       const res = await axios.post(
@@ -21,10 +21,14 @@ const Login = () => {
         },
         { withCredentials: true }
       );
+    
       dispatch(addUser(res.data));
       return navigate("/");
     } catch (err) {
-      console.log(err.message);
+      console.log(err);
+      
+      setError("InValid Credentials");
+      
     }
   };
 
@@ -64,6 +68,7 @@ const Login = () => {
                 </label>
               </div>
             </div>
+            <p className="text-red-500">{error}</p>
             <div className="card-actions justify-center">
               <button className="btn btn-primary" onClick={handleLogin}>
                 login
