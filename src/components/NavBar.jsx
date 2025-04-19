@@ -55,10 +55,10 @@ const NavBar = () => {
               <a>Homepage</a>
             </li>
             <li>
-              <Link to="/connections">Portfolio</Link>
+              <Link to="/connections">My Connections</Link>
             </li>
             <li>
-              <a>About</a>
+              <Link to="/requests">Connection Requests</Link>
             </li>
           </ul>
         </div>
