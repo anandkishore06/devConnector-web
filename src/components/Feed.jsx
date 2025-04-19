@@ -29,7 +29,17 @@ const Feed = () => {
       getFeed();
     }
   }, []);
- 
+  
+  if(!feed) return;
+  if (feed.length <= 0)
+    return (
+      <div className="flex items-center justify-center h-64">
+        <h1 className="text-2xl font-semibold text-gray-500">
+          🚫 No More Users Found
+        </h1>
+      </div>
+    );
+  
 
   return (
     <div className="flex justify-center my-10">
