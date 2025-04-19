@@ -2,7 +2,6 @@ import React from "react";
 
 const UserCard = ({ user }) => {
   // const {firstname, lastname, age, gender, photoURL, about} = user;
-  console.log(user);
 
   return (
     <div>
@@ -14,6 +13,7 @@ const UserCard = ({ user }) => {
           <h2 className="card-title">
             {user?.firstname + " " + user?.lastname}
           </h2>
+          <p>{user?.age + ", "+ user?.gender}</p>
           <p>{user?.about}</p>
           <div className="card-actions justify-center my-4">
             <button className="btn btn-primary">Ignore</button>

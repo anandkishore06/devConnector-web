@@ -19,7 +19,6 @@ const Body = () => {
       const res = await axios.get(BASE_URL + "/profile/view", {
         withCredentials: true,
       });
-      console.log(res);
       
       dispatch(addUser(res.data));
     } catch (err) {
@@ -35,11 +34,21 @@ const Body = () => {
   }, []);
 
   return (
-    <div>
-      <NavBar />
-      <Outlet />
-      <Footer />
-    </div>
+    
+      <div className="min-h-screen flex flex-col">
+        <NavBar />
+        <main className="flex-grow">
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
+  
+    
+    // <div>
+    //   <NavBar />
+    //   <Outlet />
+    //   <Footer />
+    // </div>
   );
 };
 
