@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BASE_URL } from "../utils/constants";
 import { addRequest, removeRequest } from "../utils/requestSlice";
+import { addConnections } from "../utils/connectionSlice";
 
 const Request = () => {
   const dispatch = useDispatch();
@@ -13,6 +14,17 @@ const Request = () => {
         const res = await axios.post(BASE_URL + "/request/review/" + status + "/"+ _id, {},{
             withCredentials: true
         })
+        if(status === "accepted"){
+          try {
+                const res = await axios.get(BASE_URL + "/user/connections", {
+                  withCredentials: true,
+                });
+          
+                dispatch(addConnections(res?.data?.data));
+              } catch (err) {
+                //
+              }
+        }
         dispatch(removeRequest(_id));
     }
     catch(err){
@@ -24,7 +36,7 @@ const Request = () => {
     const res = await axios.get(BASE_URL + "/user/requests/received", {
       withCredentials: true,
     });
-    console.log(res.data.data);
+   
     dispatch(addRequest(res?.data?.data));
   };
 

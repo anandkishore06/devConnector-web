@@ -5,14 +5,14 @@ import { BASE_URL } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 const EditProfile = ({ user }) => {
-  console.log(user?.firstname);
 
-  const [firstname, setFirstname] = useState(user?.firstname);
-  const [lastname, setLastname] = useState(user?.lastname);
-  const [age, setAge] = useState(user?.age);
-  const [gender, setGender] = useState(user?.gender);
-  const [about, setAbout] = useState(user?.about);
-  const [photoURL, setPhotoURL] = useState(user?.photoURL);
+  const [firstname, setFirstname] = useState(user?.firstname || "");
+const [lastname, setLastname] = useState(user?.lastname || "");
+const [age, setAge] = useState(user?.age || "");
+const [gender, setGender] = useState(user?.gender || "");
+const [about, setAbout] = useState(user?.about || "");
+const [photoURL, setPhotoURL] = useState(user?.photoURL || "");
+
   const [error, setError] = useState("");
   const [toast, setToast] = useState(false);
 
